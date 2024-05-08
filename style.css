@@ -1,0 +1,28 @@
+:root {
+    --box-width: 600px;
+    --box-height: 400px;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#canvas {
+    width: var(--box-width);
+    height: var(--box-height);
+    border: 1px solid black;
+    display: block;
+    object-fit: contain;
+}
+
+.header {
+    width: var(--box-width);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    font-size: large;
+}
+
