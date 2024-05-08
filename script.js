@@ -6,15 +6,14 @@ const originalWidth = canvas.width;
 /* Ball calculations and references */
 var ball;
 const delay = 16; // ms
-const gravity = 6; // px/s^2
-const coeff = 0.004; // air resistence
+var gravity = 6; // px/s^2
+var coeff = 0.004; // air resistence
 
 
 function init() {
     initBoxDimensions();
-    ball = new Ball(10);
-    ball.draw(canvas.width/2, canvas.height/2);
-    console.log(checkYCollision());
+    ball = new Ball(15);
+    ball.draw(canvas.width/2, canvas.height - ball.radius);
     let interval = setInterval(updateCanvas, delay);
 }
 
@@ -52,6 +51,9 @@ class Ball {
         context.scale(ratio, ratio);
         context.beginPath();
         context.arc(x, y, this.radius, 0, 2 * Math.PI);
+        context.fillStyle = "lavender"
+        context.strokeStyle = "black"
+        context.fill();
         context.stroke();
         this.x = x;
         this.y = y;
@@ -67,9 +69,38 @@ class Ball {
     }
 }
 
-function moveBall() {
-    ball.xVel = 5;
-    // ball.yVel = 1;
+document.addEventListener("keypress", pushBall)
+
+function pushBall(event) {
+    let string = `${event.code}`;
+    switch (string) {
+        case "KeyA":
+            ball.xVel -= 5;
+            break;
+        case "KeyD":
+            ball.xVel += 5;
+            break;
+        case "KeyS":
+            ball.yVel += 5;
+            break;
+        case "KeyW":
+            ball.yVel -= 5;
+            break;
+    }
+}
+function toggleGravity() {
+    if (gravity > 0) {
+        gravity = 0;
+    } else {
+        gravity = 6;
+    }
+}
+function toggleFriction() {
+    if (coeff > 0) {
+        coeff = 0;
+    } else {
+        coeff = 0.004;
+    }
 }
 
 function getObjectFitSize(

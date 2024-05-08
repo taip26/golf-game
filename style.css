@@ -1,12 +1,24 @@
 :root {
-    --box-width: 600px;
-    --box-height: 400px;
+    --box-width: 800px;
+    --box-height: 800px;
 }
 
 body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: rgb(20, 21, 46);
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+button {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.button-container {
+    width: var(--box-width);
+    display: flex;
+    justify-content: space-between;
 }
 
 #canvas {
@@ -15,6 +27,17 @@ body {
     border: 1px solid black;
     display: block;
     object-fit: contain;
+    background-image: url("tramp-copy.jpg");
+    background-color: white;
+    margin:10px
+}
+
+.title {
+    color: white;
+    font-weight: bold;
+    font-size: 30px;
+    margin-bottom: 5px;;
+    text-shadow:  0 0 3px black, 0 0 3px black;
 }
 
 .header {
